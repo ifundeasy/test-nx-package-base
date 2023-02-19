@@ -1,0 +1,25 @@
+{
+  "name": "svc-auth",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "middlewares": "*",
+    "assets": "*",
+    "jquery": "^3.6.3",
+    "utils": "*"
+  },
+  "scripts": {
+    "build": "rm -rf dist && webpack",
+    "start": "npm run build && node server.js",
+    "start:dev": "npm run build && nodemon server.js --config nodemon.json",
+    "sql:create": "sequelize-cli db:create",
+    "sql:drop": "sequelize-cli db:drop",
+    "sql:migrate": "sequelize-cli db:migrate",
+    "sql:migrate:undo": "sequelize-cli db:migrate:undo",
+    "sql:migrate:undo:all": "sequelize-cli db:migrate:undo:all",
+    "sql:seed:all": "sequelize-cli db:seed:all",
+    "sql:seed:undo": "sequelize-cli db:seed:undo",
+    "sql:seed:undo:all": "sequelize-cli db:seed:undo:all",
+    "sql:model": "node ../../bin/generate-models.js --package svc-auth"
+  }
+}

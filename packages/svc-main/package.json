@@ -1,0 +1,13 @@
+{
+  "name": "svc-main",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "middlewares": "*",
+    "svc-auth": "*"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "start:dev": "nodemon server.js --config nodemon.json"
+  }
+}

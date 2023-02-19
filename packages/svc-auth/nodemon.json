@@ -1,0 +1,23 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    ".git",
+    ".data",
+    "node_modules/**/node_modules",
+    "certificates",
+    "dist",
+    "test",
+    "swagger.json"
+  ],
+  "verbose": false,
+  "execMap": {
+    "js": "node --harmony"
+  },
+  "events": {
+    "restart": "npm run build"
+  },
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js,html,css,ts"
+}

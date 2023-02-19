@@ -1,0 +1,67 @@
+version: '3.7'
+
+services:
+  test-nx-package-base-redis:
+    image: test-nx-package-base-redis
+    ports:
+      - 6379:6379
+    # volumes:
+    #   - /opt/shared/test-nx-package-base/redis-data:/data
+
+  test-nx-package-base-postgres:
+    image: test-nx-package-base-postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: 96fdQPBFxp2ADueHhMSpuDy3
+
+  test-nx-package-base-svc-auth:
+    image: test-nx-package-base-svc-auth
+    deploy:
+      replicas: 1
+    ports:
+      - 3000:3000
+      - 30000:30000
+    environment:
+      NODE_ENV: development
+      APP_SLUG: 'test-nx-package-base [dev]'
+      APP_PORT: 3000
+      APP_HOST: test-nx-package-base-svc-auth
+      APP_LOG_LEVEL: debug
+      APP_NAME: svc-auth
+      RPC_PORT: 30000
+      SQL_USERNAME: postgres
+      SQL_PASSWORD: 96fdQPBFxp2ADueHhMSpuDy3
+      SQL_DBNAME: test-nx-package-base-services
+      SQL_HOST: test-nx-package-base-postgres
+      SQL_PORT: 5432
+      SQL_DIALECT: postgres
+      SQL_DATETIME_QUERY: 'SELECT CURRENT_TIMESTAMP'
+      REDIS_DB: 0
+      REDIS_HOST: test-nx-package-base-redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: 96fdQPBFxp2ADueHhMSpuDy3
+      SVC_URL_AUTH: http://11.22.33.44:3000
+      SVC_URL_MAIN: http://11.22.33.44:3001
+      RPC_URL_AUTH: dns:test-nx-package-base-svc-auth:30000
+      RPC_URL_MAIN: dns:test-nx-package-base-svc-main:30010
+
+  test-nx-package-base-svc-main:
+    image: test-nx-package-base-svc-main
+    deploy:
+      replicas: 1
+    ports:
+      - 3001:3001
+      - 30010:30010
+    environment:
+      NODE_ENV: development
+      APP_SLUG: 'test-nx-package-base [dev]'
+      APP_PORT: 3001
+      APP_LOG_LEVEL: debug
+      APP_NAME: svc-main
+      APP_COOKIE_KEYS: YE4F8KgT6r9HVWtwDhubDpnT,Gb7jXQjyzvDu2jQ7fnn736cx,TeDhsrTqyhh8WhRUts4JbULM
+      RPC_PORT: 30010
+      SVC_URL_AUTH: http://11.22.33.44:3000
+      SVC_URL_MAIN: http://11.22.33.44:3001
+      RPC_URL_AUTH: dns:test-nx-package-base-svc-auth:30000
+      RPC_URL_MAIN: dns:test-nx-package-base-svc-main:30010

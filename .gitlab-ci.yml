@@ -1,0 +1,50 @@
+image: docker:stable
+stages:
+  # - package
+  - docker_build
+  - deploy_k8s
+variables:
+  KUBECONFIG: /etc/deploy/config
+  # MAVEN_OPTS: "-Dmaven.repo.local=/opt/cache/.m2/repository"
+
+# mvn_build_job:
+#   image: maven:3.6.2-jdk-14
+#   stage: package
+#   tags:
+#     - k8s-runner
+#   script:
+#     - mvn package -B -DskipTests
+#     - cp target/demo.war /opt/cache
+
+docker_build_job:
+  image: docker:latest
+  stage: docker_build
+  # tags:
+  #   - k8s-runner
+  script:
+    - docker login -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD registry.gitlab.com
+    - docker build -t registry.gitlab.com/ifundeasy/test-nx-package-base:$CI_PIPELINE_ID .
+    - docker push registry.gitlab.com/ifundeasy/test-nx-package-base:$CI_PIPELINE_ID
+    - docker rmi --force  $(docker images | grep svc-main | awk '{print $3}')
+  only:
+    - development
+    - stagging
+    - main
+
+deploy_k8s_job:
+  image: registry.cn-hangzhou.aliyuncs.com/haoshuwei24/kubectl:1.16.6
+  stage: deploy_k8s
+  # tags:
+  #   - k8s-runner
+  script:
+    - mkdir -p /etc/deploy
+    - echo $kube_config |base64 -d > $KUBECONFIG
+    - ls
+    - pwd
+    - sed -i "s/IMAGE_TAG/$CI_PIPELINE_ID/g" /builds/ifundeasy/test-nx-package-base/deployment/deployment.yaml
+    - cat /builds/ifundeasy/test-nx-package-base/deployment/deployment.yaml
+    - kubectl apply -f /builds/ifundeasy/test-nx-package-base/deployment/deployment.yaml -n ifundeasy/test-nx-package-base-dev
+  only:
+    - development
+    - stagging
+    - main
