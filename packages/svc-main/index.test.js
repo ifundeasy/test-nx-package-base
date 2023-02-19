@@ -15,7 +15,9 @@ describe('Test example', () => {
     console.info(`svc-auth (under svc-auth) listen on ${3000}`)
     expect(services.v1.odd.isOdd(123)).toBe(true)
 
-    Object.assign(this, { app, sql, services, server })
+    Object.assign(this, {
+      app, sql, services, server
+    })
   });
 
   afterAll(async () => {

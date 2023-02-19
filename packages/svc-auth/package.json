@@ -20,6 +20,8 @@
     "sql:seed:all": "sequelize-cli db:seed:all",
     "sql:seed:undo": "sequelize-cli db:seed:undo",
     "sql:seed:undo:all": "sequelize-cli db:seed:undo:all",
-    "sql:model": "node ../../bin/generate-models.js --package svc-auth"
+    "sql:model": "node ../../bin/generate-models.js --package svc-auth",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   }
 }

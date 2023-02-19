@@ -14,5 +14,4 @@ Run `nx graph` to see a diagram of the dependencies of the projects.
 
 ## Todo
 
-1. Error when trigger `npx nx run middlewares:lint:fix`
-2. Fix docker swarn build and deploy
+1. Fix docker swarn build and deploy

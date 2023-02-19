@@ -8,10 +8,7 @@
     "svc-auth": "./bin/migrate-run-dev.sh svc-auth",
     "svc-auth:dev": "./bin/migrate-run-dev.sh svc-auth",
     "svc-main": "./bin/run.sh svc-main",
-    "svc-main:dev": "./bin/run.sh svc-main",
-    "lint": "eslint --ignore-path .gitignore .",
-    "lint:fix": "eslint --ignore-path .gitignore . --fix",
-    "test": "jest"
+    "svc-main:dev": "./bin/run.sh svc-main"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.8.9",

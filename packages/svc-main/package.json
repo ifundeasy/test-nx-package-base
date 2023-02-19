@@ -8,6 +8,9 @@
   },
   "scripts": {
     "start": "node server.js",
-    "start:dev": "nodemon server.js --config nodemon.json"
+    "start:dev": "nodemon server.js --config nodemon.json",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "jest"
   }
 }

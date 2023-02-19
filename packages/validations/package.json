@@ -1,5 +1,9 @@
 {
   "name": "validations",
   "version": "1.0.0",
-  "main": "index.js"
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  }
 }

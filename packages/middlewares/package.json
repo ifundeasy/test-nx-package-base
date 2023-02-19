@@ -4,5 +4,9 @@
   "main": "index.js",
   "dependencies": {
     "validations": "*"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   }
 }
