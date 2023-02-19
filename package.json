@@ -8,7 +8,8 @@
     "svc-auth": "./bin/migrate-run-dev.sh svc-auth",
     "svc-auth:dev": "./bin/migrate-run-dev.sh svc-auth",
     "svc-main": "./bin/run.sh svc-main",
-    "svc-main:dev": "./bin/run.sh svc-main"
+    "svc-main:dev": "./bin/run.sh svc-main",
+    "test": "jest"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.8.9",
