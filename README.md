@@ -11,7 +11,3 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
 Run `nx graph` to see a diagram of the dependencies of the projects.
 
 ![alt architecture](images/architecture.png "Architecture")
-
-## Todo
-
-1. Fix docker swarn build and deploy

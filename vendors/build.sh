@@ -23,10 +23,10 @@ echo "" && echo "Building postgres"
 cd $DIR/postgres
 bash build.sh
 
+cd $DIR/..
+
 echo "" && echo "Building svc-auth"
-cd $DIR/../packages/svc-auth
-docker build --rm -t test-nx-package-base-svc-auth -f Dockerfile .
+docker build --rm -t test-nx-package-base-svc-auth -f packages/svc-auth/Dockerfile .
 
 echo "" && echo "Building svc-main"
-cd $DIR/../packages/svc-main
-docker build --rm -t test-nx-package-base-svc-main -f Dockerfile .
+docker build --rm -t test-nx-package-base-svc-main -f packages/svc-main/Dockerfile .

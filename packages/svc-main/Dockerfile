@@ -30,9 +30,9 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # Run layers
 RUN [[ -f /opt/app/.env ]] || touch /opt/app/.env
 RUN sed -i "s|localhost|host.docker.internal|g" /opt/app/.env
-RUN chmod +x /opt/app/entrypoint.sh
+RUN chmod +x /opt/app/bin/migrate-run.sh
 
-EXPOSE 3001
-EXPOSE 30010
+EXPOSE 3000
+EXPOSE 30000
 
-CMD ["/bin/bash", "entrypoint.sh"]
+CMD ["/bin/bash", "bin/migrate-run.sh", "svc-main"]

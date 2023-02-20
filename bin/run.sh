@@ -20,4 +20,5 @@ RDIR=$( dirname "$SOURCE" )
 DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
 
 cd $DIR/../packages/$PACKAGE
+npm run test --if-present
 npm run start

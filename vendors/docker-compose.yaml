@@ -61,6 +61,17 @@ services:
       APP_NAME: svc-main
       APP_COOKIE_KEYS: YE4F8KgT6r9HVWtwDhubDpnT,Gb7jXQjyzvDu2jQ7fnn736cx,TeDhsrTqyhh8WhRUts4JbULM
       RPC_PORT: 30010
+      SQL_USERNAME: postgres
+      SQL_PASSWORD: 96fdQPBFxp2ADueHhMSpuDy3
+      SQL_DBNAME: test-nx-package-base-services
+      SQL_HOST: test-nx-package-base-postgres
+      SQL_PORT: 5432
+      SQL_DIALECT: postgres
+      SQL_DATETIME_QUERY: 'SELECT CURRENT_TIMESTAMP'
+      REDIS_DB: 0
+      REDIS_HOST: test-nx-package-base-redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: 96fdQPBFxp2ADueHhMSpuDy3
       SVC_URL_AUTH: http://11.22.33.44:3000
       SVC_URL_MAIN: http://11.22.33.44:3001
       RPC_URL_AUTH: dns:test-nx-package-base-svc-auth:30000

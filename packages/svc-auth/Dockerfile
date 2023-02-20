@@ -32,9 +32,9 @@ RUN [[ -f /opt/app/.env ]] || touch /opt/app/.env
 RUN sed -i "s|localhost|host.docker.internal|g" /opt/app/.env
 RUN pwd
 RUN ls -la
-RUN chmod +x /opt/app/entrypoint.sh
+RUN chmod +x /opt/app/bin/migrate-run.sh
 
 EXPOSE 3000
 EXPOSE 30000
 
-CMD ["/bin/bash", "entrypoint.sh"]
+CMD ["/bin/bash", "bin/migrate-run.sh", "svc-auth"]

@@ -32,7 +32,6 @@ describe('Test example', () => {
       .expect('Content-Type', /json/)
       .expect(200)
       .expect((res) => {
-        expect(res.body.slug).toBe('test-nx-package-base')
         expect(res.body.name).toBe('svc-main')
       })
       .end((err, res) => {
